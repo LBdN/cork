@@ -134,6 +134,7 @@
     <None Include="..\..\src\rawmesh\rawMesh.tpp">
       <Filter>Header Files\rawmesh</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\util\log.cpp">
