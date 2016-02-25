@@ -1,0 +1,3 @@
+[submodule "submodules/mpir-windows-builds"]
+	path = submodules/mpir-windows-builds
+	url = https://github.com/Legrandin/mpir-windows-builds.git
