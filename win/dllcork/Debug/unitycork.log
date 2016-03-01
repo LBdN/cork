@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (unitycork.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  dllmain.cpp
+     Creating library C:\Users\lionel\Code\cork\win\unitycork\Debug\dllcork.lib and object C:\Users\lionel\Code\cork\win\unitycork\Debug\dllcork.exp
+  unitycork.vcxproj -> C:\Users\lionel\Code\cork\win\unitycork\Debug\dllcork.dll
