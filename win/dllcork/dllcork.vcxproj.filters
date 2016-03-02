@@ -16,9 +16,6 @@
     <ClCompile Include="..\..\src\util\log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\file_formats\off.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -31,7 +28,12 @@
     <ClCompile Include="..\..\src\util\timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="..\..\src\oldmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\accel\aabvh.h">
@@ -103,7 +105,9 @@
     <ClInclude Include="..\..\src\isct\quantization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\dllmain.h" />
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -125,6 +129,7 @@
     <None Include="..\..\src\rawmesh\rawMesh.tpp">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="booleanEngine.i" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

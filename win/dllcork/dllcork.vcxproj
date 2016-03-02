@@ -29,7 +29,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -77,7 +77,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\src;..\..\src\accel;..\..\src\file_formats;..\..\src\isct;..\..\src\math;..\..\src\mesh;..\..\src\rawmesh;..\..\src\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;WIN32;_DEBUG;_WINDOWS;_USRDLL;DLLCORK_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -160,7 +160,7 @@
     <ClInclude Include="..\..\src\util\prelude.h" />
     <ClInclude Include="..\..\src\util\shortVec.h" />
     <ClInclude Include="..\..\src\util\unionFind.h" />
-    <ClInclude Include="src\dllmain.h" />
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\mesh\mesh.bool.tpp" />
@@ -169,6 +169,7 @@
     <None Include="..\..\src\mesh\mesh.topoCache.tpp" />
     <None Include="..\..\src\mesh\mesh.tpp" />
     <None Include="..\..\src\rawmesh\rawMesh.tpp" />
+    <None Include="booleanEngine.i" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -184,10 +185,10 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NO_TIMER;REDUCED;CDT_ONLY;TRILIBRARY;ANSI_DECLARATORS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NO_TIMER;REDUCED;CDT_ONLY;TRILIBRARY;ANSI_DECLARATORS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\oldmain.cpp" />
     <ClCompile Include="..\..\src\util\log.cpp" />
     <ClCompile Include="..\..\src\util\timer.cpp" />
-    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
