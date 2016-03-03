@@ -10,7 +10,7 @@ namespace ma {
 
 
 	float testcork() {
-		if (false) {
+		if (true) {
 			CorkTriMesh corkmesh = {};
 			//computeDifference(NULL, NULL, corkmesh*);				
 		}
@@ -18,8 +18,8 @@ namespace ma {
 	}
 
 
-	void compute_union(float vertices_1[], int n_vertices1, uint faces_1[], int n_faces_1, 
-							  float vertices_2[], int n_vertices2, uint faces_2[], int n_faces_2){
+	void compute_union( float vertices_1[], int n_vertices1, uint faces_1[], int n_faces_1, 
+					    float vertices_2[], int n_vertices2, uint faces_2[], int n_faces_2){
 		//CorkTriMesh mesh1 = {
 		//	n_faces_1,
 		//	n_vertices1,
