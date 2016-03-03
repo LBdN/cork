@@ -12,6 +12,7 @@ class BooleanEngine {
 		//virtual BooleanEngine() {}
 
     public:
+		BooleanEngine() {}
         virtual ~BooleanEngine() {}
 
     public:

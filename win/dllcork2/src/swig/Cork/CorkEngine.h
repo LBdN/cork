@@ -5,6 +5,7 @@
 
 class CorkEngine : public BooleanEngine {
     public:
+		CorkEngine() {};
         virtual ~CorkEngine();
 
     public:
