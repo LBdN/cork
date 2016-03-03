@@ -7,13 +7,41 @@
 
 class BooleanEngine {
     public:
-        typedef std::shared_ptr<BooleanEngine> Ptr;
-        static Ptr create();
+        /*typedef std::shared_ptr<BooleanEngine> Ptr;
+        static Ptr create();*/
+		//virtual BooleanEngine() {}
 
     public:
         virtual ~BooleanEngine() {}
 
     public:
+
+		MatrixFr convert_to_eigenF(double vertices[], int nb_vertices, int vertex_length) {
+			MatrixFr eigenM (nb_vertices, vertex_length);
+			std::copy(vertices, vertices + nb_vertices*vertex_length, eigenM.data());
+			return eigenM;
+		}
+
+		MatrixIr convert_to_eigenI(int faces[], int nb_faces, int face_length) {
+			MatrixIr eigenM(nb_faces, face_length);
+			std::copy(faces, faces + nb_faces*face_length, eigenM.data());
+			return eigenM;
+		}
+
+		void set_mesh(double vertices[], int nb_vertices, int vertex_length,
+							  int faces[], int nb_faces, int face_length,
+							  int target) {
+			MatrixFr verticesM = convert_to_eigenF(vertices, nb_vertices, vertex_length);
+			MatrixIr facesM = convert_to_eigenI(faces, nb_faces, face_length);
+			if (target == 1) {
+				set_mesh_1(verticesM, facesM);
+			}
+			else {
+				set_mesh_2(verticesM, facesM);
+			}
+		}
+
+
         void set_mesh_1(const MatrixFr& vertices, const MatrixIr& faces) {
             m_vertices_1 = vertices;
             m_faces_1 = faces;
@@ -24,7 +52,7 @@ class BooleanEngine {
             m_faces_2 = faces;
         }
 
-		void extract_mesh(const MatrixFr& vertices, const MatrixIr& faces, float[] out_vertices, int[] out_triangles) {
+		void extract_mesh(MatrixFr& vertices, MatrixIr& faces, double* out_vertices, int* out_triangles) {
 			out_vertices  = vertices.data();
 			out_triangles = faces.data();
 		}

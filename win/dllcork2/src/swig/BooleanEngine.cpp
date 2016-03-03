@@ -13,15 +13,16 @@
 //#include <MeshUtils/IsolatedVertexRemoval.h>
 //#include <MeshUtils/ShortEdgeRemoval.h>
 
-BooleanEngine::Ptr BooleanEngine::create() {
-    return Ptr(new CorkEngine()); 
-}
-
-//void BooleanEngine::clean_up() {
-//    remove_duplicated_vertices();
-//    remove_short_edges();
-//    remove_isolated_vertices();
+//BooleanEngine::Ptr BooleanEngine::create() {
+//    return Ptr(new CorkEngine()); 
 //}
+
+void BooleanEngine::clean_up() {
+	return;
+    /*remove_duplicated_vertices();
+    remove_short_edges();
+    remove_isolated_vertices();*/
+}
 //
 //void BooleanEngine::remove_duplicated_vertices() {
 //    DuplicatedVertexRemoval remover(m_vertices, m_faces);
@@ -44,6 +45,7 @@ BooleanEngine::Ptr BooleanEngine::create() {
 //    m_faces = remover.get_faces();
 //}
 //
-//void BooleanEngine::serialize_xml(const std::string& filename) const {
-//    throw NotImplementedError("Serialization is not supported");
-//}
+void BooleanEngine::serialize_xml(const std::string& filename) const {
+    //throw NotImplementedError("Serialization is not supported");
+	throw new std::invalid_argument("Serialization is not supported");
+}

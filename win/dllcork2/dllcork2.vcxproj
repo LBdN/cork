@@ -90,7 +90,7 @@
       <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;NO_TIMER;TRILIBRARY;WIN32;_DEBUG;_WINDOWS;_USRDLL;DLLCORK2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\swig\Core;$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -403,6 +403,7 @@
     <ClCompile Include="src\cork\util\timer.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\swig\BooleanEngine.cpp" />
+    <ClCompile Include="src\swig\booleanEngine_wrap.cxx" />
     <ClCompile Include="src\swig\Cork\CorkEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -410,13 +411,19 @@
     <None Include="..\..\..\..\..\..\Program Files (x86)\Windows Kits\8.1\Include\um\prsht.inl" />
     <None Include="..\..\..\..\..\..\Program Files (x86)\Windows Kits\8.1\Include\um\winbase.inl" />
     <None Include="..\..\..\..\..\..\Program Files (x86)\Windows Kits\8.1\Include\um\winuser.inl" />
+    <None Include="packages.config" />
     <None Include="src\cork\mesh\mesh.bool.cpp" />
     <None Include="src\cork\mesh\mesh.isct.cpp" />
     <None Include="src\cork\mesh\mesh.remesh.cpp" />
     <None Include="src\cork\mesh\mesh.topoCache.cpp" />
     <None Include="src\cork\mesh\mesh.cpp" />
     <None Include="src\cork\rawmesh\rawMesh.cpp" />
-    <None Include="src\swig\booleanEngine.i" />
+    <CustomBuild Include="src\swig\booleanEngine.i">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Downloads\swigwin-3.0.8\swigwin-3.0.8\swig.exe -csharp -c++ -outdir C:\Users\lionel\Code\cork\win\swigcork\generated %(FullPath)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)_swiged.cxx</Outputs>
+    </CustomBuild>
+    <None Include="src\swig\Core\EigenTypedef.i" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,7 +10,7 @@
 #include <EigenTypedef.h>
 //#include <Core/Exception.h>
 
-namespace CorkEngineHelper {
+namespace CorkEngineHelper  {
     void ensure_3D_triangle_mesh(const MatrixFr& vertices, const MatrixIr& faces) {
         if (vertices.cols() != 3) {
             std::stringstream err_msg;

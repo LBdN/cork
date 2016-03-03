@@ -773,6 +773,9 @@
     <ClCompile Include="src\swig\BooleanEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\swig\booleanEngine_wrap.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\..\Program Files (x86)\Windows Kits\8.1\Include\um\commdlg.inl">
@@ -805,6 +808,10 @@
     <None Include="src\cork\rawmesh\rawMesh.cpp">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="src\swig\booleanEngine.i" />
+    <None Include="packages.config" />
+    <None Include="src\swig\Core\EigenTypedef.i" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="src\swig\booleanEngine.i" />
   </ItemGroup>
 </Project>
