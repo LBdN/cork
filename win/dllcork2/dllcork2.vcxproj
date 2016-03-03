@@ -104,6 +104,9 @@ del "$(ProjectDir)src\swig\Cork\*.cxx"
 del "$(ProjectDir)src\swig\Core\*.cxx"
 del "$(ProjectDir)..\swigcork\generated\*.cs"</Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy /y $(TargetPath) $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -183,10 +186,6 @@ del "$(ProjectDir)..\swigcork\generated\*.cs"</Command>
     <ClInclude Include="src\cork\util\shortVec.h" />
     <ClInclude Include="src\cork\util\unionFind.h" />
     <ClInclude Include="src\dllmain.h" />
-    <ClInclude Include="src\swig\BooleanEngine.h" />
-    <ClInclude Include="src\swig\Core\EigenTypedef.h" />
-    <ClInclude Include="src\swig\Core\Exception.h" />
-    <ClInclude Include="src\swig\Cork\CorkEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\cork\cork.cpp" />
@@ -201,9 +200,6 @@ del "$(ProjectDir)..\swigcork\generated\*.cs"</Command>
     <ClCompile Include="src\cork\util\log.cpp" />
     <ClCompile Include="src\cork\util\timer.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
-    <ClCompile Include="src\swig\BooleanEngine.cpp" />
-    <ClCompile Include="src\swig\Cork\CorkEngine.cpp" />
-    <ClCompile Include="src\swig\Cork\CorkEngine_wrap.cxx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -213,13 +209,6 @@ del "$(ProjectDir)..\swigcork\generated\*.cs"</Command>
     <None Include="src\cork\mesh\mesh.topoCache.cpp" />
     <None Include="src\cork\mesh\mesh.cpp" />
     <None Include="src\cork\rawmesh\rawMesh.cpp" />
-    <None Include="src\swig\booleanEngine.i" />
-    <None Include="src\swig\Core\EigenTypedef.i" />
-    <CustomBuild Include="src\swig\Cork\CorkEngine.i">
-      <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Downloads\swigwin-3.0.8\swigwin-3.0.8\swig.exe -csharp -c++ -outdir C:\Users\lionel\Code\cork\win\swigcork\generated %(FullPath)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)_swiged.cxx</Outputs>
-    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
