@@ -8,6 +8,40 @@ using System.Text;
 
 namespace unitycork
 {
+
+
+    //class CorkTriMeshHandler
+    //{
+    //    // handle into unmanaged memory, for an unmanaged object
+    //    IntPtr _h;
+
+    //    // performs some operation on h
+    //    [DllImport ( "dllcork2" )]
+    //    static extern void OperateOnHandle ( IntPtr h );
+
+    //    // frees resources of h
+    //    [DllImport ( "dllcork2" )]
+    //    static extern void DeleteHandle ( IntPtr h );
+
+    //    ~CorkTriMeshHandler ()
+    //    {
+    //        DeleteHandle ( _h );
+    //    }
+
+    //    CorkTriMeshHandler(IntPtr handle )
+    //    {
+    //        this._h = handle;
+    //    }
+
+
+    //    public void m ()
+    //    {
+    //        OperateOnHandle ( _h );
+    //        // no further references to _handle
+    //    }
+    //}
+
+
     public class PluginImport 
     {
 
@@ -16,10 +50,17 @@ namespace unitycork
         [DllImport ( "dllcork2", EntryPoint = "addition" )]
         public static extern float addition ( float val_1, float val_2 );
 
+
+        [DllImport ( "dllcork2" )]
+        private static extern bool createTriMesh ( float[] vertices_1, int n_vertices1, uint[] faces_1, int n_faces_1, out IntPtr item );
+
         //Lets make our calls from the Plugin
         [DllImport ( "dllcork2")]
-        private static extern void compute_union ( float[] vertices_1, int n_vertices1, uint[] faces_1, int n_faces_1,
-                              float[] vertices_2, int n_vertices2, uint[] faces_2, int n_faces_2 );        
+        private static extern bool compute_union ( float[] vertices_1, int n_vertices1, uint[] faces_1, int n_faces_1,
+                                                   float[] vertices_2, int n_vertices2, uint[] faces_2, int n_faces_2, out IntPtr item );
+
+        [DllImport ( "dllcork2" )]
+        private static extern uint GetNbVertices ( IntPtr h );
 
         [DllImport ( "dllcork2" )]
         private static extern float substraction ( float val_1, float val_2 );
@@ -28,9 +69,8 @@ namespace unitycork
         [DllImport ( "dllcork2" )]
         private static extern float division ( float val_1, float val_2 );
 
-        //Lets make our calls from the Plugin
-        [DllImport ( "dllcork2", EntryPoint = "testcork" )]
-        public static extern float testcork (  );
+
+        
 
 
         public static void Start ()
@@ -47,11 +87,16 @@ namespace unitycork
                              1,6,7, 1,7,2,  7,4,3, 7,3,2,  4,7,6, 4,6,5};
             int nb_faces = 12;
 
+            IntPtr handle = IntPtr.Zero;
 
-            compute_union ( vertices1, nb_vertices, faces, nb_faces, 
-                            vertices2, nb_vertices, faces2, nb_faces );
+            Debug.Print ( createTriMesh ( vertices1, nb_vertices, faces, nb_faces, out handle ).ToString () );
+            Debug.Print ( GetNbVertices ( handle ).ToString () );
 
-            Debug.Print ( testcork ( ).ToString () );
+            Debug.Print (  compute_union ( vertices1, nb_vertices, faces, nb_faces, 
+                            vertices2, nb_vertices, faces2, nb_faces, out handle ).ToString() );
+
+            Debug.Print ( GetNbVertices ( handle).ToString () );
+
             var i = addition ( 5, 5 );
             Debug.Print ( addition ( 5, 5 ).ToString() );
             Debug.Print ( substraction ( 10, 5 ).ToString () );

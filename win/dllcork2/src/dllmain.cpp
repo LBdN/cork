@@ -8,40 +8,76 @@
 
 namespace ma {
 
+	//typedef void* HANDLE;
 
-	float testcork() {
-		if (true) {
-			CorkTriMesh corkmesh = {};
-			//computeDifference(NULL, NULL, corkmesh*);				
-		}
-		return 42;
+	//bool CreateCorkMesh(HANDLE *item) {
+	//	item = CorkTriMesh result;
+	//}
+	//;
+	//void DestroyCorkMesh(HANDLE item);
+	//int GetNbFaces(HANDLE item);
+	//int GetNbVertices(HANDLE item);
+	//int* GetVertices(HANDLE item);
+	//int* GetFaces(HANDLE item);
+
+	//int * GetFaces(HANDLE item)
+	//{
+	//	return nullptr;
+	//}
+
+
+
+
+	uint GetNbVertices(HANDLE handle) {
+		CorkTriMesh *mesh = (struct CorkTriMesh*) handle;
+		return mesh->n_vertices;
+	};
+
+
+	bool createTriMesh(float vertices_1[], int n_vertices1, uint faces_1[], int n_faces_1, HANDLE *outmesh) {
+		CorkTriMesh mesh1 = {
+			n_faces_1,
+			n_vertices1,
+			faces_1,
+			vertices_1
+		};
+		*outmesh = (void*) &mesh1;
+		current_mesh = &mesh1;
+		return true;
 	}
 
 
-	void compute_union( float vertices_1[], int n_vertices1, uint faces_1[], int n_faces_1, 
-					    float vertices_2[], int n_vertices2, uint faces_2[], int n_faces_2){
-		//CorkTriMesh mesh1 = {
-		//	n_faces_1,
-		//	n_vertices1,
-		//	faces_1,
-		//	vertices_1
-		//};
-		//CorkTriMesh mesh2 = {
-		//	n_faces_2,
-		//	n_vertices2,
-		//	faces_2,
-		//	vertices_2
-		//};
+	bool compute_union( float vertices_1[], int n_vertices1, uint faces_1[], int n_faces_1, 
+					    float vertices_2[], int n_vertices2, uint faces_2[], int n_faces_2,
+						HANDLE *outmesh){
+		CorkTriMesh mesh1 = {
+			n_faces_1,
+			n_vertices1,
+			faces_1,
+			vertices_1
+		};
 	
-	/*CorkTriMesh result;	*/
+		CorkTriMesh mesh2 = {
+			n_faces_2,
+			n_vertices2,
+			faces_2,
+			vertices_2
+		};
 	
+	CorkTriMesh result;
+	
+	isSolid(mesh1);
+	
+	bool ok = isSolid(mesh2);
+	
+	computeUnion(mesh1, mesh2, &result);
+	*outmesh = (void*)&result;
+	current_mesh = &result;
 
-	//computeUnion(mesh1, mesh2, &result);
-
-	/*freeCorkTriMesh(&mesh1);
-	freeCorkTriMesh(&mesh2);*/
+	freeCorkTriMesh(&mesh1);
+	freeCorkTriMesh(&mesh2);
 	
-	return;
+	return true;
 	}
 
 
@@ -63,4 +99,5 @@ namespace ma {
 			throw new std::invalid_argument("denominator cannot be 0");
 		return val_1 / val_2;
 	}
+	
 }
