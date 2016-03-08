@@ -8,56 +8,36 @@
 
 namespace ma {
 
-	//typedef void* HANDLE;
-
-	//bool CreateCorkMesh(HANDLE *item) {
-	//	item = CorkTriMesh result;
-	//}
-	//;
-	//void DestroyCorkMesh(HANDLE item);
-	//int GetNbFaces(HANDLE item);
-	//int GetNbVertices(HANDLE item);
-	//int* GetVertices(HANDLE item);
-	//int* GetFaces(HANDLE item);
-
-	//int * GetFaces(HANDLE item)
-	//{
-	//	return nullptr;
-	//}
-
-
-
-
 	uint GetNbVertices() {		
-		return current_mesh.n_vertices;
+		return result.n_vertices;
 	};
 
 
 	uint GetNbFaces() {
-		return current_mesh.n_triangles;
+		return result.n_triangles;
 	};
 
 
 	float* GetVertices(uint* pSize)
 	{
-		float* list = (float*)malloc(current_mesh.n_vertices * sizeof(float));
-		for (unsigned int i = 0; i < current_mesh.n_vertices; i++)
+		float* list = (float*)malloc(result.n_vertices * sizeof(float));
+		for (unsigned int i = 0; i < result.n_vertices; i++)
 		{
-			list[i] = current_mesh.vertices[i];
+			list[i] = result.vertices[i];
 		}
-		*pSize = current_mesh.n_vertices;
+		*pSize = result.n_vertices;
 		return list; 
 	}
 
 
 	__int32* GetFaces(uint* pSize)
 	{		
-		__int32* list = (__int32*)malloc(current_mesh.n_triangles * sizeof(__int32));
-		for (unsigned int i = 0; i < current_mesh.n_triangles; i++)
+		__int32* list = (__int32*)malloc(result.n_triangles * sizeof(__int32));
+		for (unsigned int i = 0; i < result.n_triangles; i++)
 		{
-			list[i] = current_mesh.triangles[i];
+			list[i] = result.triangles[i];
 		}
-		*pSize = current_mesh.n_triangles;
+		*pSize = result.n_triangles;
 
 		return list;
 	}
@@ -73,67 +53,44 @@ namespace ma {
 		free(list);
 	}
 
-	bool createTriMesh(float vertices_1[], int n_vertices1, uint faces_1[], int n_faces_1) {
-		CorkTriMesh mesh1 = {
-			n_faces_1,
-			n_vertices1,
-			faces_1,
-			vertices_1
-		};
-		current_mesh = mesh1;
+	bool CreateTriMesh(float vertices_1[], uint n_vertices1, uint faces_1[], uint n_faces_1, int target) {
+
+		if (target == 1) {
+			mesh1 = {
+				n_faces_1,
+				n_vertices1,
+				faces_1,
+				vertices_1
+			};
+			return true;
+		}
+		if (target == 2) {
+			mesh2 = {
+				n_faces_1,
+				n_vertices1,
+				faces_1,
+				vertices_1
+			};
+			return true;
+		}		
+			
+		return false;
+	}
+
+
+	bool ComputeUnion( ){
+		
+		if (!isSolid(mesh1) || !isSolid(mesh2)) {
+			return false;
+		}
+	
+		computeUnion(mesh1, mesh2, &result);
+		//current_mesh = &result;
+
+		/*freeCorkTriMesh(&mesh1);
+		freeCorkTriMesh(&mesh2);*/
+	
 		return true;
 	}
 
-
-	bool compute_union( float vertices_1[], int n_vertices1, uint faces_1[], int n_faces_1, 
-					    float vertices_2[], int n_vertices2, uint faces_2[], int n_faces_2){
-		CorkTriMesh mesh1 = {
-			n_faces_1,
-			n_vertices1,
-			faces_1,
-			vertices_1
-		};
-	
-		CorkTriMesh mesh2 = {
-			n_faces_2,
-			n_vertices2,
-			faces_2,
-			vertices_2
-		};
-	
-	//CorkTriMesh result;
-	
-	isSolid(mesh1);
-	
-	bool ok = isSolid(mesh2);
-	
-	computeUnion(mesh1, mesh2, &current_mesh);
-	//current_mesh = &result;
-
-	/*freeCorkTriMesh(&mesh1);
-	freeCorkTriMesh(&mesh2);*/
-	
-	return true;
-	}
-
-
-	//FUNCTION: adds two values
-	float addition(float val_1, float val_2) {
-		return val_1 + val_2;
-	}
-	//FUNCTION: substracts two values
-	float substraction(float val_1, float val_2) {
-		return val_1 - val_2;
-	}
-	//FUNCTION: multiplies two values
-	float multiplication(float val_1, float val_2) {
-		return val_1 * val_2;
-	}
-	//FUNCTION: divide two values
-	float division(float val_1, float val_2) {
-		if (val_2 == 0)
-			throw new std::invalid_argument("denominator cannot be 0");
-		return val_1 / val_2;
-	}
-	
 }

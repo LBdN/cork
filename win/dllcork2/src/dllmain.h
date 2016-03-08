@@ -19,11 +19,12 @@ namespace ma {
 
 		typedef void* HANDLE;
 
-		static CorkTriMesh current_mesh;
 
-		__declspec(dllexport) float testcork();
-		__declspec(dllexport) bool compute_union(float vertices_1[], int n_vertices1, uint faces_1[], int n_faces_1, 
-												  float vertices_2[], int n_vertices2, uint faces_2[], int n_faces_2);
+		static CorkTriMesh mesh1;
+		static CorkTriMesh mesh2;
+		static CorkTriMesh result;
+
+		__declspec(dllexport) bool ComputeUnion();
 		__declspec(dllexport) uint GetNbVertices();
 		__declspec(dllexport) uint GetNbFaces();
 		__declspec(dllexport) __int32* GetFaces(uint* pSize);
@@ -31,12 +32,7 @@ namespace ma {
 		__declspec(dllexport) void RemoveIntList(__int32* list);
 		__declspec(dllexport) void RemoveFloatList(float* list);
 
-		__declspec(dllexport) bool createTriMesh(float vertices_1[], int n_vertices1, uint faces_1[], int n_faces_1);
-		__declspec(dllexport) float addition(float val_1, float val_2);
-		__declspec(dllexport) float substraction(float val_1, float val_2);
-		__declspec(dllexport) float multiplication(float val_1, float val_2);
-		__declspec(dllexport) float division(float val_1, float val_2);
-		
+		__declspec(dllexport) bool CreateTriMesh(float vertices_1[], uint n_vertices1, uint faces_1[], uint n_faces_1, int target);		
 	}
 }
 
