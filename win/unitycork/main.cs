@@ -9,8 +9,10 @@ using System.Text;
 namespace unitycork
 {
 
-    public class PluginImport 
+    public class CorkGateway
     {
+
+
 
         //=== sending the data
         [DllImport ( "dllcork2" )]
@@ -101,44 +103,36 @@ namespace unitycork
         }
 
 
-        public static void Start ()
+        public static void SendMesh ( float[] vertices_1, uint n_vertices1, uint[] faces_1, uint n_faces_1, int target )
         {
-            //{ 0.0f,0.0f,0.0f, 1.0f,0.0f,0.0f, 0.0f,1.0f,0.0f};
-            float[] vertices1 = {1f, 1f, 1f, -1f, 1f, 1f, -1f, -1f, 1f, 1f, -1f, 1f, 1f, -1f, -1f, 1f, 1f, -1f, -1f, 1f, -1f, -1f, -1f, -1f };
-            //{ 0.0f,0.0f,0.0f, 1.0f,0.0f,0.0f, 1.0f,1.0f,0.0f};
-            float[] vertices2 = {0.5f+1f, 0.5f+1f, 0.5f+1f, 0.5f-1f, 0.5f+1f, 0.5f+1f, 0.5f-1f, 0.5f-1f, 0.5f+1f, 0.5f+ 1f, 0.5f-1f, 0.5f+1f, 0.5f+1f, 0.5f-1f, 0.5f-1f, 0.5f+ 1f, 0.5f+1f, 0.5f-1f, 0.5f-1f, 0.5f+1f, 0.5f-1f, 0.5f-1f, 0.5f-1f, 0.5f-1f };
-
-            uint nb_vertices = 8;            
-            uint[] faces = { 0,1,2, 0,2,3,  0,3,4, 0,4,5,  0,5,6, 0,6,1,
-                             1,6,7, 1,7,2,  7,4,3, 7,3,2,  4,7,6, 4,6,5};
-            uint[] faces2 = { 0,1,2, 0,2,3,  0,3,4, 0,4,5,  0,5,6, 0,6,1,
-                             1,6,7, 1,7,2,  7,4,3, 7,3,2,  4,7,6, 4,6,5};
-            uint nb_faces = 12;
-
-            // create the first mesh
-            int target = 1;
-            CreateTriMesh ( vertices1, nb_vertices, faces, nb_faces, target );
-
-            // create the second mesh
-            target = 2;
-            CreateTriMesh ( vertices2, nb_vertices, faces2, nb_faces, target );
-
-            // do the op
-            ComputeUnion ();
-            ComputeDifference ();
-            ComputeIntersection ();
-            ComputeSymmetricDifference ();
-
-            // get the result values
-            Debug.Print ( GetNbVertices ( ).ToString () );            
-
-            var array0 = GetFaceList();
-            Console.WriteLine( string.Join(", ", array0.Select ( i => i.ToString ()).ToArray() ) );
-
-
-            var array = GetVerticesList ();
-            Console.WriteLine ( string.Join ( ", ", array.Select ( i => i.ToString () ).ToArray () ) );           
+            CreateTriMesh( vertices_1, n_vertices1, faces_1, n_faces_1, target );
         }
+
+        public static void ExecuteBooleanOp(string op_type ) { 
+        
+        switch (op_type){
+                case "union":
+                    ComputeUnion ();
+                    break;
+                case "difference":
+                    ComputeDifference ();
+                    break;
+                case "intersection":
+                   ComputeIntersection ();
+                   break;
+                case "symetric_difference":
+                    ComputeSymmetricDifference ();
+                    break;
+            }
+
+        }
+
+        public static int TestSetup ()
+        {
+            return 42;
+        }
+
+
     }
 }
 
