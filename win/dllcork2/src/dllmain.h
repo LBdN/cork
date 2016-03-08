@@ -25,6 +25,10 @@ namespace ma {
 		static CorkTriMesh result;
 
 		__declspec(dllexport) bool ComputeUnion();
+		__declspec(dllexport) bool ComputeIntersection();
+		__declspec(dllexport) bool ComputeDifference();
+		__declspec(dllexport) bool ComputeSymmetricDifference();
+
 		__declspec(dllexport) uint GetNbVertices();
 		__declspec(dllexport) uint GetNbFaces();
 		__declspec(dllexport) __int32* GetFaces(uint* pSize);

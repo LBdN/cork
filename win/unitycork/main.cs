@@ -12,15 +12,24 @@ namespace unitycork
     public class PluginImport 
     {
 
-
+        //=== sending the data
         [DllImport ( "dllcork2" )]
         private static extern bool CreateTriMesh ( float[] vertices_1, uint n_vertices1, uint[] faces_1, uint n_faces_1, int target );
 
-        //Lets make our calls from the Plugin
+        //=== doing the Ops
         [DllImport ( "dllcork2")]
         private static extern bool ComputeUnion ( );
 
-        //========== getting data out of the current mesh
+        [DllImport ( "dllcork2" )]
+        private static extern bool ComputeIntersection ();
+
+        [DllImport ( "dllcork2" )]
+        private static extern bool ComputeDifference ();
+
+        [DllImport ( "dllcork2" )]
+        private static extern bool ComputeSymmetricDifference ();
+
+        //=== getting data out of the current mesh
 
         [DllImport ( "dllcork2" )]
         private static extern uint GetNbVertices ( );
@@ -116,22 +125,19 @@ namespace unitycork
 
             // do the op
             ComputeUnion ();
+            ComputeDifference ();
+            ComputeIntersection ();
+            ComputeSymmetricDifference ();
 
             // get the result values
             Debug.Print ( GetNbVertices ( ).ToString () );            
 
             var array0 = GetFaceList();
-            foreach ( var item in array0 )
-            {
-                Console.WriteLine ( item.ToString () );
-            }
+            Console.WriteLine( string.Join(", ", array0.Select ( i => i.ToString ()).ToArray() ) );
+
 
             var array = GetVerticesList ();
-            foreach ( var item in array )
-            {
-                Console.WriteLine ( item.ToString () );
-            }
-           
+            Console.WriteLine ( string.Join ( ", ", array.Select ( i => i.ToString () ).ToArray () ) );           
         }
     }
 }

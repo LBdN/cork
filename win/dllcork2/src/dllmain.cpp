@@ -79,6 +79,8 @@ namespace ma {
 
 
 	bool ComputeUnion( ){
+
+		result = {};
 		
 		if (!isSolid(mesh1) || !isSolid(mesh2)) {
 			return false;
@@ -87,10 +89,68 @@ namespace ma {
 		computeUnion(mesh1, mesh2, &result);
 		//current_mesh = &result;
 
-		/*freeCorkTriMesh(&mesh1);
-		freeCorkTriMesh(&mesh2);*/
+		//freeCorkTriMesh(&mesh1);
+		//freeCorkTriMesh(&mesh2);
 	
 		return true;
 	}
 
+	bool ComputeIntersection() {
+
+		result = {};
+
+		if (!isSolid(mesh1) || !isSolid(mesh2)) {
+			return false;
+		}
+
+		computeIntersection(mesh1, mesh2, &result);
+		//current_mesh = &result;
+
+		//freeCorkTriMesh(&mesh1);
+		//freeCorkTriMesh(&mesh2);
+
+		return true;
+	}
+
+	bool ComputeDifference() {
+
+		result = {};
+
+		if (!isSolid(mesh1) || !isSolid(mesh2)) {
+			return false;
+		}
+
+		computeDifference(mesh1, mesh2, &result);
+		//current_mesh = &result;
+
+		//freeCorkTriMesh(&mesh1);
+		//freeCorkTriMesh(&mesh2);
+
+		return true;
+	}
+
+	bool ComputeSymmetricDifference() {
+
+		result = {};
+
+		if (!isSolid(mesh1) || !isSolid(mesh2)) {
+			return false;
+		}
+
+		computeSymmetricDifference(mesh1, mesh2, &result);
+		//current_mesh = &result;
+
+		//freeCorkTriMesh(&mesh1);
+		//freeCorkTriMesh(&mesh2);
+
+		return true;
+	}
+
+
+
+	void EndOp() {
+		mesh1 = {};
+		mesh2 = {};
+		result = {};
+	}
 }
