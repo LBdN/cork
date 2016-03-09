@@ -20,24 +20,26 @@ namespace ma {
 
 	float* GetVertices(uint* pSize)
 	{
-		float* list = (float*)malloc(result.n_vertices * sizeof(float));
-		for (unsigned int i = 0; i < result.n_vertices; i++)
+		int n_float = result.n_vertices * 3;
+		float* list = (float*)malloc(n_float * sizeof(float));
+		for (unsigned int i = 0; i < n_float; i++)
 		{
 			list[i] = result.vertices[i];
 		}
-		*pSize = result.n_vertices;
+		*pSize = n_float;
 		return list; 
 	}
 
 
 	__int32* GetFaces(uint* pSize)
 	{		
-		__int32* list = (__int32*)malloc(result.n_triangles * sizeof(__int32));
-		for (unsigned int i = 0; i < result.n_triangles; i++)
+		int n_int = result.n_triangles * 3;
+		__int32* list = (__int32*)malloc(n_int * sizeof(__int32));
+		for (unsigned int i = 0; i < n_int; i++)
 		{
 			list[i] = result.triangles[i];
 		}
-		*pSize = result.n_triangles;
+		*pSize = n_int;
 
 		return list;
 	}
