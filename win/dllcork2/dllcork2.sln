@@ -11,6 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swigcork", "..\swigcork\swi
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unitycork", "..\unitycork\unitycork.csproj", "{28D5F340-11D7-4C8D-9A66-C2D88CC06456}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E2C47B9C-6945-458D-A750-6962CCFAD7FA} = {E2C47B9C-6945-458D-A750-6962CCFAD7FA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test_unitycork", "..\wincork\ConsoleApplication1\test_unitycork.csproj", "{87C1D71B-BEF1-4875-8D3D-F7963A15BC98}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -27,15 +30,16 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|Any CPU.Build.0 = Debug|x64
+		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|Any CPU.Build.0 = Debug|Win32
 		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|x64.ActiveCfg = Debug|x64
 		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|x64.Build.0 = Debug|x64
-		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|x86.ActiveCfg = Debug|Win32
-		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|x86.Build.0 = Debug|Win32
+		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|x86.ActiveCfg = Release|Win32
+		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Debug|x86.Build.0 = Release|Win32
 		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Release|Any CPU.ActiveCfg = Release|Win32
 		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Release|x64.ActiveCfg = Release|x64
 		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Release|x64.Build.0 = Release|x64
+		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Release|x64.Deploy.0 = Release|x64
 		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Release|x86.ActiveCfg = Release|Win32
 		{E2C47B9C-6945-458D-A750-6962CCFAD7FA}.Release|x86.Build.0 = Release|Win32
 		{236D0E53-122F-4DF5-AB4D-8DFB67320328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
