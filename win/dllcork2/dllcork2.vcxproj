@@ -106,8 +106,8 @@ del "$(ProjectDir)src\swig\Core\*.cxx"
 del "$(ProjectDir)..\swigcork\generated\*.cs"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy /f /y $(TargetPath) $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)
-xcopy /f /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32\mpir.dll $(TargetDir)..\..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
+      <Command>copy /y $(TargetPath) $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)
+copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32\mpir.dll $(TargetDir)..\..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
