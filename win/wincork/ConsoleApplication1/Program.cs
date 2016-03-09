@@ -45,14 +45,14 @@ namespace ConsoleApplication1
             //uint[] faces2 = { 0,1,2, 0,2,3,  0,3,4, 0,4,5,  0,5,6, 0,6,1,
             //                 1,6,7, 1,7,2,  7,4,3, 7,3,2,  4,7,6, 4,6,5};
 
-            CorkGateway.SendMesh ( vertices0, Convert.ToUInt32 ( vertices0.Length ), faces0, Convert.ToUInt32 ( faces0.Length ), 1 );
+            CorkGateway.SendMesh ( vertices0, Convert.ToUInt32 ( vertices0.Length ), faces0, Convert.ToUInt32 ( faces0.Length )/3, 1 );
 
 
             System.Single[] vertices1 = { -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f, 0.5f, 0.5f, 0.5f, -0.5f, 0.5f, 0.5f, 0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, -0.5f, -0.5f, -0.5f, -0.5f, -0.5f};
             //System.UInt32[] faces1    = new System.UInt32[] { 0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23 };
             UInt32[] faces1  = new System.UInt32[] { 0, 1, 2, 0, 2, 3, 3, 2, 4, 3, 4, 5, 5, 4, 6, 5, 6, 7, 7, 6, 1, 7, 1, 0, 1, 6, 4, 1, 4, 2, 7, 0, 3, 7, 3, 5 };
 
-            CorkGateway.SendMesh ( vertices1, Convert.ToUInt32 ( vertices1.Length ), faces1, Convert.ToUInt32 ( faces1.Length ), 2 );
+            CorkGateway.SendMesh ( vertices1, Convert.ToUInt32 ( vertices1.Length ), faces1, Convert.ToUInt32 ( faces1.Length )/3, 2 );
 
 
 
