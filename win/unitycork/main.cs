@@ -108,23 +108,42 @@ namespace unitycork
             CreateTriMesh( vertices_1, n_vertices1, faces_1, n_faces_1, target );
         }
 
-        public static void ExecuteBooleanOp(string op_type ) { 
-        
-        switch (op_type){
-                case "union":
-                    ComputeUnion ();
-                    break;
-                case "difference":
-                    ComputeDifference ();
-                    break;
-                case "intersection":
-                   ComputeIntersection ();
-                   break;
-                case "symetric_difference":
-                    ComputeSymmetricDifference ();
-                    break;
-            }
 
+        public static bool ExecuteBooleanOp(string op_type ) { 
+        
+            try
+            {
+                switch ( op_type )
+                {
+                    case "union":
+                        ComputeUnion ();
+                        break;
+                    case "difference":
+                        ComputeDifference ();
+                        break;
+                    case "intersection":
+                        ComputeIntersection ();
+                        break;
+                    case "symetric_difference":
+                        ComputeSymmetricDifference ();
+                        break;
+                }
+            }
+            catch ( SEHException ex )
+            {
+                return false;
+            }
+            catch ( ExternalException ex )
+            {
+                return false;
+            }
+            catch( Exception ex )
+            {
+                return false;
+            }
+            finally { 
+                return true;
+            }
         }
 
         public static int TestSetup ()

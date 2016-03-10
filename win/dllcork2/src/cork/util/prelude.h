@@ -31,6 +31,8 @@
 #include <algorithm>
 #include <iostream>
 
+#include <stdexcept>
+
 #ifndef uint
 typedef unsigned int uint;
 #endif
@@ -54,7 +56,7 @@ std::ostream &err();
         err()     << "ENSURE FAILED at " \
                   << __FILE__ << ", line #" << __LINE__ << ":\n" \
                   << "    " << #STATEMENT << std::endl; \
-        exit(1); \
+		throw std::invalid_argument( "received negative value" ); \
     } \
 }
 #endif // ENSURE
