@@ -52,6 +52,13 @@ namespace unitycork
         [DllImport ( "dllcork2" )]
         private static extern void RemoveFloatList ( IntPtr array );
 
+        [DllImport ( "dllcork2" )]
+        private static extern void MoveResultToMesh1 ();
+
+        [DllImport ( "dllcork2" )]
+        private static extern void EndOp ();
+
+
         //==========         
 
         public static float[] GetVerticesList ()
@@ -109,6 +116,18 @@ namespace unitycork
         }
 
 
+        public static void MoveResultToMesh ()
+        {
+            MoveResultToMesh1 ();
+        }
+
+        public static void CleanState ()
+        {
+            return;
+            EndOp ();
+        }
+
+
         public static bool ExecuteBooleanOp(string op_type ) { 
         
             try
@@ -142,8 +161,9 @@ namespace unitycork
                 return false;
             }
             finally { 
-                return true;
+                
             }
+            return true;
         }
 
         public static int TestSetup ()

@@ -33,7 +33,7 @@ namespace ma {
 
 	__int32* GetFaces(uint* pSize)
 	{		
-		int n_int = result.n_triangles * 3;
+		unsigned int n_int = result.n_triangles * 3;
 		__int32* list = (__int32*)malloc(n_int * sizeof(__int32));
 		for (unsigned int i = 0; i < n_int; i++)
 		{
@@ -148,6 +148,20 @@ namespace ma {
 		return true;
 	}
 
+	void MoveResultToMesh1() {
+	
+		mesh1.n_triangles = result.n_triangles;
+		mesh1.n_vertices = result.n_vertices;
+		mesh1.triangles = result.triangles;
+		mesh1.vertices = result.vertices;
+
+		result.n_triangles = 0 ;
+		result.n_vertices = 0 ;
+		result.triangles = nullptr;
+		result.vertices = nullptr;
+
+		//result = {};
+	}
 
 
 	void EndOp() {

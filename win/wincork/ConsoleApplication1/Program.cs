@@ -62,11 +62,17 @@ namespace ConsoleApplication1
 
 
             Console.WriteLine ( "before boolean ops" );
+
             // do the op
-            CorkGateway.ExecuteBooleanOp ( "union" );
-            CorkGateway.ExecuteBooleanOp ( "difference" );
-            CorkGateway.ExecuteBooleanOp ( "intersection" );
-            CorkGateway.ExecuteBooleanOp ( "symetric_difference" );
+            var result = CorkGateway.ExecuteBooleanOp ( "union" );
+            if (result == false) { Console.WriteLine ( "ERROR" ); }
+            result = CorkGateway.ExecuteBooleanOp ( "difference" );
+            if ( result == false ) { Console.WriteLine ( "ERROR" ); }
+            result = CorkGateway.ExecuteBooleanOp ( "intersection" );
+            if ( result == false ) { Console.WriteLine ( "ERROR" ); }
+            result =  CorkGateway.ExecuteBooleanOp ( "symetric_difference" );
+            if ( result == false ) { Console.WriteLine ( "ERROR" ); }
+            
 
             // get the result values            
             Console.WriteLine ( "after boolean ops" );

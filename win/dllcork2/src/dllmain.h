@@ -24,6 +24,9 @@ namespace ma {
 		static CorkTriMesh mesh2;
 		static CorkTriMesh result;
 
+		__declspec(dllexport) void MoveResultToMesh1();
+		__declspec(dllexport) void EndOp();
+
 		__declspec(dllexport) bool ComputeUnion();
 		__declspec(dllexport) bool ComputeIntersection();
 		__declspec(dllexport) bool ComputeDifference();
