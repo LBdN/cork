@@ -91,12 +91,12 @@
       <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;NO_TIMER;TRILIBRARY;WIN32;_DEBUG;_WINDOWS;_USRDLL;DLLCORK2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\swig\Core;$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\lionel\Code\cork\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>mpir.lib</AdditionalOptions>
     </Link>
     <PreBuildEvent>
@@ -119,17 +119,17 @@ copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32\m
       <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;_DEBUG;_WINDOWS;_USRDLL;DLLCORK2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\swig\Core;$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalOptions>mpir.lib</AdditionalOptions>
-      <AdditionalLibraryDirectories>C:\Users\lionel\Code\cork\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y $(TargetPath) $(TargetDir)..\..\..\wincork\ConsoleApplication1\bin\$(Configuration)
-copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\mpir.dll $(TargetDir)..\..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
+      <Command>copy /y $(TargetPath) $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)
+copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\mpir.dll $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,13 +142,20 @@ copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\m
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;WIN32;NDEBUG;_WINDOWS;_USRDLL;DLLCORK2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>mpir.lib</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y $(TargetPath) $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)
+copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32\mpir.dll $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -160,13 +167,20 @@ copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\m
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;NDEBUG;_WINDOWS;_USRDLL;DLLCORK2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>mpir.lib</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y $(TargetPath) $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)
+copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\mpir.dll $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="packages\libgmp_vc120.5.1.3.2\build\native\include\gmp.h" />
@@ -227,14 +241,14 @@ copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\m
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="packages\libgmp_vc120.5.1.3.2\build\native\libgmp_vc120.targets" Condition="Exists('packages\libgmp_vc120.5.1.3.2\build\native\libgmp_vc120.targets')" />
     <Import Project="packages\Eigen.3.2.7\build\native\Eigen.targets" Condition="Exists('packages\Eigen.3.2.7\build\native\Eigen.targets')" />
+    <Import Project="packages\libgmp_vc120.5.1.3.2\build\native\libgmp_vc120.targets" Condition="Exists('packages\libgmp_vc120.5.1.3.2\build\native\libgmp_vc120.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\libgmp_vc120.5.1.3.2\build\native\libgmp_vc120.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\libgmp_vc120.5.1.3.2\build\native\libgmp_vc120.targets'))" />
     <Error Condition="!Exists('packages\Eigen.3.2.7\build\native\Eigen.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Eigen.3.2.7\build\native\Eigen.targets'))" />
+    <Error Condition="!Exists('packages\libgmp_vc120.5.1.3.2\build\native\libgmp_vc120.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\libgmp_vc120.5.1.3.2\build\native\libgmp_vc120.targets'))" />
   </Target>
 </Project>
