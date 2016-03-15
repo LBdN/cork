@@ -128,8 +128,8 @@ copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32\m
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y $(TargetPath) $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)
-copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\mpir.dll $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
+      <Command>copy /y $(TargetPath) $(TargetDir)..\..\..\wincork\ConsoleApplication1\bin\$(Configuration)
+copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\mpir.dll $(TargetDir)..\..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -178,8 +178,8 @@ copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32\m
       <AdditionalOptions>mpir.lib</AdditionalOptions>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y $(TargetPath) $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)
-copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\mpir.dll $(TargetDir)..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
+      <Command>copy /y $(TargetPath) $(TargetDir)..\..\..\wincork\ConsoleApplication1\bin\$(Configuration)
+copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_64\mpir.dll $(TargetDir)..\..\..\wincork\ConsoleApplication1\bin\$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
