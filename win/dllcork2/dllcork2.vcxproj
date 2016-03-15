@@ -116,7 +116,7 @@ copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32\m
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;_DEBUG;_WINDOWS;_USRDLL;DLLCORK2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;_DEBUG;_WINDOWS;_USRDLL;DLLCORK2_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -165,7 +165,7 @@ copy /y $(ProjectDir)..\..\submodules\mpir-windows-builds\mpir-2.6.0_VS2015_32\m
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;NDEBUG;_WINDOWS;_USRDLL;DLLCORK2_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_USE_MATH_DEFINES;NOMINMAX;NDEBUG;_WINDOWS;_USRDLL;DLLCORK2_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)src\cork;$(ProjectDir)src\cork\accel;$(ProjectDir)src\cork\file_formats;$(ProjectDir)src\cork\isct;$(ProjectDir)src\cork\math;$(ProjectDir)src\cork\mesh;$(ProjectDir)src\cork\rawmesh;$(ProjectDir)src\cork\util;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
