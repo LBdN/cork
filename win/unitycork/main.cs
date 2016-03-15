@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-//using System.Threading.Tasks;
 
-namespace unitycork
+namespace UnityCork
 {
-
     public class CorkGateway
     {
-
-
-
         //=== sending the data
         [DllImport ( "dllcork2" )]
         private static extern bool CreateTriMesh ( float[] vertices_1, uint n_vertices1, uint[] faces_1, uint n_faces_1, int target );
@@ -32,7 +23,6 @@ namespace unitycork
         private static extern bool ComputeSymmetricDifference ();
 
         //=== getting data out of the current mesh
-
         [DllImport ( "dllcork2" )]
         private static extern uint GetNbVertices ( );
 
@@ -109,12 +99,10 @@ namespace unitycork
             return result;
         }
 
-
         public static void SendMesh ( float[] vertices_1, uint n_vertices1, uint[] faces_1, uint n_faces_1, int target )
         {
             CreateTriMesh( vertices_1, n_vertices1, faces_1, n_faces_1, target );
         }
-
 
         public static void MoveResultToMesh ()
         {
@@ -126,7 +114,6 @@ namespace unitycork
             return;
             EndOp ();
         }
-
 
         public static bool ExecuteBooleanOp(string op_type ) { 
         
@@ -170,8 +157,6 @@ namespace unitycork
         {
             return 42;
         }
-
-
     }
 }
 

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-using unitycork;
+using UnityCork;
 
 namespace ConsoleApplication1
 {
